@@ -256,27 +256,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
 
   if (contactForm && formResult && submitBtn) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       submitBtn.disabled = true;
-      formResult.textContent = 'sending message...';
+      formResult.textContent = 'sending message to takarpit777@gmail.com...';
+      formResult.style.color = 'var(--accent)';
 
       const formData = new FormData(contactForm);
       const name = formData.get('name') || '';
       const email = formData.get('email') || '';
       const message = formData.get('message') || '';
 
-      const mailtoLink = `mailto:${emailAddress}?subject=Portfolio message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+      const payload = {
+        name: name,
+        email: email,
+        message: message,
+        _subject: `New portfolio inquiry from ${name}`
+      };
 
-      setTimeout(() => {
-        formResult.textContent = 'thank you, message received! opening mail draft...';
-        window.open(mailtoLink, '_blank');
-        contactForm.reset();
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/takarpit777@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          formResult.textContent = '✓ message delivered! thank you, i will reply soon.';
+          contactForm.reset();
+        } else {
+          throw new Error('API delivery fallback');
+        }
+      } catch (err) {
+        // Fallback to mailto
+        formResult.textContent = 'opening email draft in your mail app...';
+        const mailtoLink = `mailto:${emailAddress}?subject=Portfolio message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+        window.location.href = mailtoLink;
+      } finally {
         submitBtn.disabled = false;
         setTimeout(() => {
-          formResult.textContent = 'message sent!';
-        }, 2500);
-      }, 400);
+          formResult.textContent = '';
+        }, 6000);
+      }
     });
   }
 });

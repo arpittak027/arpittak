@@ -890,6 +890,32 @@ a.experience-company:hover {
   font-size:.92rem;
   line-height:1.65
 }
+.contact-direct-email {
+  margin-top: 1.25rem;
+}
+.contact-email-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.contact-email-address:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.contact-email-address span.arrow {
+  font-size: 0.85rem;
+  transition: transform 0.16s ease;
+}
+.contact-email-address:hover span.arrow {
+  transform: translate(2px, -2px);
+}
 .contact-form {
   display:flex;
   flex-direction:column;

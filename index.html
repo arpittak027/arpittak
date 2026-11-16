@@ -376,20 +376,26 @@
             <h2 id="contact-heading" class="contact-title">have something<br>worth building?</h2>
             <p>say hello. i'm always interested in thoughtful products and difficult systems problems.</p>
             
-            <div class="hero-links" style="margin-top: 1.5rem;">
+            <div class="contact-direct-email">
+              <a href="mailto:takarpit777@gmail.com" class="contact-email-address">takarpit777@gmail.com <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="hero-links" style="margin-top: 1.25rem;">
               <div class="email-copy-wrapper">
-                <button class="btn copy-email-btn" id="contact-copy-email" style="color: var(--canvas);" aria-label="Copy confidential email address">
+                <button class="btn copy-email-btn" id="contact-copy-email" aria-label="Copy email address">
                   copy email <span class="arrow" aria-hidden="true">↗</span>
                 </button>
                 <span class="copy-toast" id="contact-copy-toast">copied!</span>
               </div>
-              <a href="mailto:takarpit777@gmail.com" class="btn" style="color: var(--canvas);">
-                send email <span aria-hidden="true">↗</span>
+              <a href="mailto:takarpit777@gmail.com" class="btn">
+                send via client <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
 
-          <form class="contact-form" id="contact-form">
+          <form class="contact-form" id="contact-form" action="https://formsubmit.co/takarpit777@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Portfolio Message for Arpit Tak">
+            <input type="hidden" name="_captcha" value="false">
             <label>
               your name
               <input class="input" type="text" name="name" required placeholder="name">
