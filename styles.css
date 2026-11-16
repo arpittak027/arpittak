@@ -90,10 +90,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible 
   letter-spacing:0;
   text-decoration:none
 }
+.accent-dot,
 .wordmark span,
 .heading-xl span,
-.section-title span {
-  color:var(--accent)
+.heading-xl .accent-dot,
+.section-title span,
+.section-title .accent-dot {
+  color: var(--accent) !important;
+  display: inline !important;
 }
 .topbar-actions,.site-nav,.hero-links,.footer-links,.project-actions {
   display:flex;
