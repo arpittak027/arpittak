@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .bg { fill: #151514; }
+      .text { fill: #f3f0e9; font-family: Newsreader, ui-serif, Georgia, serif; font-size: 34px; font-weight: 700; }
+      .dot { fill: #3b82f6; }
+      @media (prefers-color-scheme: light) {
+        .bg { fill: #f3f0e9; }
+        .text { fill: #1c1c1a; }
+        .dot { fill: #2563eb; }
+      }
+    </style>
+  </defs>
+  <rect class="bg" width="64" height="64" rx="14"/>
+  <text class="text" x="13" y="43">at</text>
+  <circle class="dot" cx="48" cy="39" r="4.5"/>
+</svg>

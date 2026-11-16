@@ -31,11 +31,15 @@
   box-sizing:border-box
 }
 html {
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 body {
   margin:0;
   min-width:320px;
+  max-width: 100%;
+  overflow-x: hidden;
   background:var(--canvas);
   background-image:radial-gradient(var(--grid-dot) 1px,transparent 1px);
   background-size:22px 22px;
@@ -43,6 +47,9 @@ body {
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility
+}
+.section, .contact-section, .site-header {
+  scroll-margin-top: 3.5rem;
 }
 button,input,textarea {
   font:inherit
@@ -334,10 +341,14 @@ to {
   gap:2rem;
   margin-top:clamp(3.5rem,7vw,5rem);
   padding-top:2.5rem;
-  border-top:1px solid var(--line)
+  border-top:1px solid var(--line);
+  min-width: 0;
+  max-width: 100%;
 }
 .heatmap-main {
-  min-width:0
+  min-width:0;
+  max-width: 100%;
+  overflow: hidden;
 }
 .heatmap-summary {
   margin:0;
@@ -348,7 +359,10 @@ to {
 .heatmap-scroll {
   margin-top:1.5rem;
   overflow-x:auto;
-  padding-bottom:.5rem
+  max-width: 100%;
+  width: 100%;
+  padding-bottom:.75rem;
+  -webkit-overflow-scrolling: touch;
 }
 .heatmap-body {
   min-width:calc(var(--weeks, 53) * 12px)
@@ -393,6 +407,24 @@ to {
 }
 .heatmap-cell.level-4 {
   background:var(--accent)
+}
+:root.light-mode .heatmap-cell {
+  background: rgba(28, 28, 26, 0.08);
+}
+:root.light-mode .heatmap-cell.is-empty {
+  background: transparent;
+}
+:root.light-mode .heatmap-cell.level-1 {
+  background: #93c5fd;
+}
+:root.light-mode .heatmap-cell.level-2 {
+  background: #60a5fa;
+}
+:root.light-mode .heatmap-cell.level-3 {
+  background: #3b82f6;
+}
+:root.light-mode .heatmap-cell.level-4 {
+  background: #1d4ed8;
 }
 .heatmap-grid .heatmap-cell:not(.is-empty):hover {
   outline:1px solid var(--ink-soft);
@@ -798,6 +830,46 @@ a.experience-company:hover {
   background:var(--ink);
   color:var(--canvas)
 }
+:root.light-mode .contact-section {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 4px 20px rgba(28, 28, 26, 0.04);
+}
+:root.light-mode .contact-section .section-label {
+  color: var(--muted);
+}
+:root.light-mode .contact-section .section-label span {
+  color: var(--accent);
+}
+:root.light-mode .contact-section .contact-title {
+  color: var(--ink);
+}
+:root.light-mode .contact-section .contact-copy>p:last-child {
+  color: var(--ink-soft);
+}
+:root.light-mode .contact-section .contact-form label {
+  color: var(--muted);
+}
+:root.light-mode .contact-section .input {
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-strong);
+}
+:root.light-mode .contact-section .input:focus {
+  border-color: var(--accent);
+}
+:root.light-mode .contact-section .btn {
+  color: var(--ink) !important;
+}
+:root.light-mode .contact-section .btn:hover {
+  color: var(--accent) !important;
+}
+:root.light-mode .contact-section .copy-email-btn {
+  color: var(--ink) !important;
+}
+:root.light-mode .contact-section .form-result {
+  color: var(--accent);
+}
 .contact-section .section-label {
   color:color-mix(in srgb,var(--canvas) 64%,transparent)
 }
@@ -878,8 +950,9 @@ a.experience-company:hover {
 .site-footer {
   display:flex;
   justify-content:space-between;
+  align-items: center;
   gap:1rem;
-  padding:1.8rem 0 .5rem;
+  padding:2.5rem 0 7rem;
   color:var(--muted);
   font-family:var(--mono);
   font-size:.7rem
@@ -888,7 +961,7 @@ a.experience-company:hover {
   margin:0
 }
 .has-dock {
-  padding-bottom:5.5rem
+  padding-bottom:8rem
 }
 .dock {
   position:fixed;
@@ -1233,7 +1306,19 @@ a.experience-company:hover {
   min-height:65px
 }
 .site-nav {
-  display:none
+  display: flex;
+  overflow-x: auto;
+  max-width: calc(100vw - 165px);
+  gap: 0.85rem;
+  padding-bottom: 2px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.site-nav::-webkit-scrollbar {
+  display: none;
+}
+.topbar-actions {
+  gap: 0.65rem;
 }
 .heading-xl {
   font-size:2.9rem
@@ -1304,26 +1389,30 @@ a.experience-company:hover {
 }
 .site-footer {
   flex-direction:column;
-  padding-bottom:1rem
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom:7rem;
 }
 .initiative-metrics {
   grid-template-columns:repeat(2,minmax(0,1fr))
 }
 .dock {
   bottom:.75rem;
-  max-width:calc(100vw - 1.5rem)
+  max-width:calc(100vw - 1.5rem);
+  padding: .35rem;
 }
 .dock-item {
-  padding:.55rem
+  padding:.45rem .6rem;
 }
 .dock-item .dock-label {
-  display:none
+  display:none;
 }
 .dock-item.is-active {
-  padding:.45rem .75rem
+  padding:.45rem .85rem;
 }
 .dock-item.is-active .dock-label {
-  display:inline
+  display:inline;
+  font-weight: 700;
 }
 .loop-back {
   display:none
@@ -1480,10 +1569,10 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
 }
 .copy-toast {
   position: absolute;
-  top: -2.2rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  padding: 0.3rem 0.65rem;
+  left: calc(100% + 0.5rem);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  padding: 0.22rem 0.55rem;
   border-radius: 4px;
   background: var(--surface-raised);
   border: 1px solid var(--line-strong);
@@ -1496,9 +1585,9 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 50;
+  z-index: 100;
 }
 .copy-toast.is-active {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(-50%) translateX(0);
 }

@@ -23,6 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
     themeSwitch.setAttribute('aria-checked', (!isLight).toString());
   });
 
+  // Keyboard shortcut: Press 'd' to toggle theme
+  window.addEventListener('keydown', (e) => {
+    if (e.target && ['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+    if (e.key === 'd' || e.key === 'D') {
+      themeSwitch.click();
+    }
+  });
+
   // ----------------------------------------------------
   // 2. Secret Email Copy Tooltip & Mailto
   // ----------------------------------------------------
@@ -248,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
 
   if (contactForm && formResult && submitBtn) {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       submitBtn.disabled = true;
       formResult.textContent = 'sending message...';
@@ -258,12 +266,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = formData.get('email') || '';
       const message = formData.get('message') || '';
 
-      // Fallback direct mailto or graceful submission
+      const mailtoLink = `mailto:${emailAddress}?subject=Portfolio message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+
       setTimeout(() => {
-        formResult.textContent = 'thank you, message received! i will get back to you shortly.';
+        formResult.textContent = 'thank you, message received! opening mail draft...';
+        window.open(mailtoLink, '_blank');
         contactForm.reset();
         submitBtn.disabled = false;
-      }, 700);
+        setTimeout(() => {
+          formResult.textContent = 'message sent!';
+        }, 2500);
+      }, 400);
     });
   }
 });
