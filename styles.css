@@ -90,7 +90,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible 
   letter-spacing:0;
   text-decoration:none
 }
-.wordmark span {
+.wordmark span,
+.heading-xl span,
+.section-title span {
   color:var(--accent)
 }
 .topbar-actions,.site-nav,.hero-links,.footer-links,.project-actions {
