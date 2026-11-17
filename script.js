@@ -41,13 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById(toastId);
     if (!btn || !toast) return;
 
+    let toastTimer = null;
     btn.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
         await navigator.clipboard.writeText(emailAddress);
         toast.textContent = 'copied!';
         toast.classList.add('is-active');
-        setTimeout(() => {
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
           toast.classList.remove('is-active');
         }, 2200);
       } catch (err) {
