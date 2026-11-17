@@ -413,11 +413,17 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--status-green);
-  box-shadow: 0 0 6px var(--status-green);
+  background: var(--status-green) !important;
+  box-shadow: 0 0 6px var(--status-green) !important;
   content: "";
   animation: status-pulse 2.2s ease-out infinite;
   flex-shrink: 0;
+}
+
+.status:after,
+.status .status-dot {
+  display: none !important;
+  content: none !important;
 }
 
 @keyframes status-pulse {
