@@ -32,52 +32,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------
-  // 2. Email Actions: Open Outlook & Copy Fallback
+  // 2. Secret Email Copy Tooltip & Mailto
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
-  const defaultSubject = encodeURIComponent('Portfolio Inquiry — Arpit Tak');
-  const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
 
-  const heroEmailBtn = document.getElementById('hero-email-btn');
-  const heroToast = document.getElementById('hero-copy-toast');
+  function setupEmailCopy(buttonId, toastId) {
+    const btn = document.getElementById(buttonId);
+    const toast = document.getElementById(toastId);
+    if (!btn || !toast) return;
 
-  if (heroEmailBtn) {
-    heroEmailBtn.addEventListener('click', () => {
-      // Quietly copy email to clipboard as convenience
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(emailAddress).catch(() => {});
-      }
-      if (heroToast) {
-        heroToast.textContent = 'opening outlook...';
-        heroToast.classList.add('is-active');
-        setTimeout(() => {
-          heroToast.classList.remove('is-active');
-        }, 2500);
-      }
-      // Note: Do not preventDefault; browser triggers mailto: opening Outlook
-    });
-  }
-
-  const contactCopyBtn = document.getElementById('contact-copy-email');
-  const contactToast = document.getElementById('contact-copy-toast');
-
-  if (contactCopyBtn && contactToast) {
     let toastTimer = null;
-    contactCopyBtn.addEventListener('click', async (e) => {
+    btn.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
         await navigator.clipboard.writeText(emailAddress);
-        contactToast.textContent = 'copied!';
-        contactToast.classList.add('is-active');
+        toast.textContent = 'copied!';
+        toast.classList.add('is-active');
         if (toastTimer) clearTimeout(toastTimer);
         toastTimer = setTimeout(() => {
-          contactToast.classList.remove('is-active');
+          toast.classList.remove('is-active');
         }, 2200);
       } catch (err) {
-        window.location.href = mailtoUrl;
+        // Fallback for older browsers
+        window.location.href = `mailto:${emailAddress}`;
       }
     });
   }
+
+  setupEmailCopy('hero-copy-email', 'hero-copy-toast');
+  setupEmailCopy('contact-copy-email', 'contact-copy-toast');
 
   // ----------------------------------------------------
   // 3. Floating Dock Scroll Progress & Section Spy

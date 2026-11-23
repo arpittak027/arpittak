@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=7.3">
+  <link rel="stylesheet" href="styles.css?v=8.0">
 </head>
 <body>
   <div id="top" class="site-root has-dock">
@@ -81,31 +81,39 @@
           <div class="header-copy">
             <p class="eyebrow">software engineer / full-stack systems</p>
             <h1 id="main-heading" class="heading-xl lowercase">arpit tak<span class="accent-dot" style="color: var(--accent) !important;">.</span></h1>
-            <p class="hero-intro">hi, i'm arpit — product-focused engineer who builds fast, reliable web platforms and developer tools. i focus on clean architecture, intuitive interfaces, and software that feels right.</p>
+            <p class="hero-intro">hi, arpit here — product-focused engineer designing responsive web platforms, real-time collaboration engines, and agentic AI tooling that stay fast under production load.</p>
             
             <div class="hero-links">
               <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">résumé <span aria-hidden="true">↗</span></a>
               <div class="email-copy-wrapper">
-                <a href="mailto:takarpit777@gmail.com?subject=Portfolio%20Inquiry%20%E2%80%94%20Arpit%20Tak" class="btn-hero-secondary" id="hero-email-btn" aria-label="Open Outlook / email client" title="Open Outlook or email client">
+                <button class="copy-email-btn btn-hero-secondary" id="hero-copy-email" aria-label="Copy email address">
                   email <span class="arrow" aria-hidden="true">↗</span>
-                </a>
-                <span class="copy-toast" id="hero-copy-toast">opening outlook...</span>
+                </button>
+                <span class="copy-toast" id="hero-copy-toast">copied!</span>
               </div>
             </div>
           </div>
 
           <div class="hero-aside">
-            <div class="hero-profile-card">
+            <!-- Ayush-inspired macOS Window Frame Widget -->
+            <div class="hero-photo-window">
+              <div class="window-header">
+                <div class="window-dots" aria-hidden="true">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="window-title">arpit.jpg</span>
+              </div>
               <div class="hero-photo-wrapper">
                 <img src="assets/arpit-photo.jpg" alt="Arpit Tak" class="hero-photo" width="140" height="140" loading="eager">
               </div>
-              <div class="hero-profile-meta">
-                <div class="profile-status">
-                  <span class="status-indicator" aria-hidden="true"></span>
-                  <span>available for work</span>
-                </div>
-                <p class="profile-location">bengaluru, in · gmt+5:30</p>
-              </div>
+            </div>
+
+            <div class="hero-note">
+              <p class="eyebrow status">bengaluru, in · available</p>
+              <h2 class="hero-note-title">production web apps & agentic tools</h2>
+              <p class="hero-note-meta">building real-time collaborative workspaces, voice-enabled interfaces, and resilient backend services.</p>
             </div>
           </div>
         </div>
@@ -117,16 +125,13 @@
           <div class="section-heading">
             <div class="section-label"><span>01</span> about</div>
             <div>
-              <h2 id="about-heading" class="section-title">background & focus<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
+              <h2 id="about-heading" class="section-title">background & craft<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
               <div class="about-body">
-                <p class="about-lead">full-stack engineer focused on web systems & developer tooling</p>
-                <p>i graduated with a b.e. in computer science & engineering from visvesvaraya technological university (acharya institute of technology), bengaluru.</p>
-                <p>i care about shipping software that feels fast, works reliably, and stays straightforward to maintain. rather than chasing hype, i focus on solid engineering fundamentals: clean database schemas, predictable state synchronization, and accessible interfaces that get out of the user's way.</p>
-                <p>recently, i've been building interactive workspaces and voice-driven platforms — including outpost (infinite canvas whiteboarding + AI document synthesis) and bolo india (client-side multilingual speech recognition).</p>
-                <div class="about-links">
-                  <a class="text-link" href="https://github.com/arpittak027" target="_blank" rel="noopener noreferrer">view github profile <span aria-hidden="true">↗</span></a>
-                  <a class="text-link" href="https://hub.xerj.org/contributors/arpittak027" target="_blank" rel="noopener noreferrer">open source corpus @ xerj hub <span aria-hidden="true">↗</span></a>
-                </div>
+                <p class="about-lead">full-stack engineer | b.e. computer science graduate</p>
+                <p>i graduated with a b.e. in computer science and engineering from visvesvaraya technological university (acharya institute of technology), bengaluru.</p>
+                <p>i care about shipping software that feels fast, works reliably, and is straightforward to maintain. rather than chasing every new framework, i focus on solid fundamentals: clean database schemas, predictable state, and accessible interfaces.</p>
+                <p>lately, i have been building interactive systems and voice-driven software — such as outpost, a real-time collaborative workspace that combines an infinite canvas with ai document editing, and bolo india, a voice-first platform tailored for indian multilingual workflows.</p>
+                <a class="text-link" href="https://github.com/arpittak027" target="_blank" rel="noopener noreferrer">view github profile <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </div>
@@ -163,8 +168,8 @@
           <div class="section-heading">
             <div class="section-label"><span>02</span> experience</div>
             <div>
-              <h2 id="exp-heading" class="section-title">engineering work<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
-              <p class="section-intro">production platforms, system architecture, and hands-on full-stack development.</p>
+              <h2 id="exp-heading" class="section-title">engineering & systems<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
+              <p class="section-intro">systems architecture, production deployments, and hands-on full-stack development.</p>
             </div>
           </div>
 
@@ -176,7 +181,7 @@
                   <div>
                     <h3 class="experience-company experience-company-lead">Independent Software Engineering</h3>
                   </div>
-                  <time class="experience-dates">2024 — PRESENT</time>
+                  <time class="experience-dates">2024 - PRESENT</time>
                 </header>
                 
                 <ol class="experience-roles">
@@ -189,11 +194,34 @@
                       <time class="experience-dates">bengaluru, india</time>
                     </header>
 
+                    <div class="initiative">
+                      <p class="initiative-label">featured architecture</p>
+                      <p><strong>Outpost</strong> — collaborative infinite canvas + agentic workspace</p>
+                      <dl class="initiative-metrics">
+                        <div>
+                          <dt>0ms</dt>
+                          <dd>local canvas latency</dd>
+                        </div>
+                        <div>
+                          <dt>100%</dt>
+                          <dd>real-time state sync</dd>
+                        </div>
+                        <div>
+                          <dt>Multi-tenant</dt>
+                          <dd>supabase rbac</dd>
+                        </div>
+                        <div>
+                          <dt>0</dt>
+                          <dd>telemetry tracking</dd>
+                        </div>
+                      </dl>
+                    </div>
+
                     <ul class="experience-highlights">
-                      <li>Architected <strong>Outpost</strong>, an open-source real-time collaborative workspace integrating tldraw infinite canvas with Gemini AI document editing and Supabase state synchronization, indexed as a verified corpus on XERJ Hub.</li>
-                      <li>Engineered <strong>Bolo India</strong>, a voice-first multilingual platform for Indian regional languages using Web Speech API with zero audio upload overhead for instant transcription.</li>
-                      <li>Built <strong>QuickEMS</strong>, an employee management system with granular role-based access control (RBAC), department workflows, and atomic attendance logging.</li>
-                      <li>Designed modular REST APIs and optimized database schemas across PostgreSQL, Supabase, and MongoDB, maintaining containerized CI/CD automated deployments.</li>
+                      <li>Architected Outpost, an agentic AI workspace unifying infinite tldraw whiteboarding and document editing with Supabase Realtime channels.</li>
+                      <li>Engineered Bolo India, a low-latency voice-first multilingual platform for Indian regional languages using Web Speech API with zero audio upload overhead.</li>
+                      <li>Built QuickEMS, an end-to-end employee management system with JWT role-based access control and atomic attendance logging.</li>
+                      <li>Implemented containerized deployments and CI/CD pipelines with zero secrets committed and automated health-check verification.</li>
                     </ul>
                   </li>
                 </ol>
@@ -205,42 +233,45 @@
         <!-- 03 / PROJECTS -->
         <section id="projects" class="section" aria-labelledby="proj-heading">
           <div class="section-heading">
-            <div class="section-label"><span>03</span> projects</div>
+            <div class="section-label"><span>03</span> selected work</div>
             <div>
               <h2 id="proj-heading" class="section-title">featured builds<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
-              <p class="section-intro">production platforms, open-source tools, and client applications.</p>
+              <p class="section-intro">production platforms and systems i have engineered.</p>
             </div>
           </div>
 
           <div class="projects-grid">
             <!-- Project 1: Outpost -->
             <article class="project-card">
-              <div class="project-card-top">
-                <span class="project-badge">featured · 2025</span>
-                <span class="project-type-tag">workspace</span>
+              <div class="project-window-bar">
+                <div class="project-window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="project-badge">featured workspace · 2025</span>
               </div>
               <div class="project-content">
                 <h3 class="project-title">Outpost</h3>
                 <p class="project-tech-stack">Next.js 16 / TypeScript / Google Gemini / Supabase / tldraw</p>
-                <p class="project-description">Real-time collaborative workspace unifying an infinite canvas whiteboard with AI-assisted document editing and multi-user state synchronization.</p>
+                <p class="project-description">Collaborative agentic workspace featuring an infinite whiteboard canvas integrated with AI-assisted document editing and real-time state synchronization.</p>
                 <div class="project-actions">
                   <a href="https://outpost-arpit.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-link">live demo <span aria-hidden="true">↗</span></a>
                   <a href="https://github.com/arpittak027/OUTPOST" target="_blank" rel="noopener noreferrer" class="project-action-link">source code <span aria-hidden="true">↗</span></a>
-                  <a href="https://hub.xerj.org/contributors/arpittak027" target="_blank" rel="noopener noreferrer" class="project-action-link">xerj corpus <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
 
             <!-- Project 2: Bolo India -->
             <article class="project-card">
-              <div class="project-card-top">
-                <span class="project-badge">speech platform · 2025</span>
-                <span class="project-type-tag">voice tech</span>
+              <div class="project-window-bar">
+                <div class="project-window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="project-badge">voice platform · 2025</span>
               </div>
               <div class="project-content">
                 <h3 class="project-title">Bolo India</h3>
                 <p class="project-tech-stack">Next.js / TypeScript / Web Speech API / Tailwind CSS</p>
-                <p class="project-description">Voice-first multilingual computing platform for Indian regional languages. Runs speech recognition directly in the browser with zero audio upload overhead.</p>
+                <p class="project-description">Voice-first multilingual computing platform designed for low-latency speech recognition and cross-language workflows in Indian regional languages.</p>
                 <div class="project-actions">
                   <a href="https://github.com/arpittak027/bolo-india" target="_blank" rel="noopener noreferrer" class="project-action-link">source code <span aria-hidden="true">↗</span></a>
                 </div>
@@ -249,14 +280,16 @@
 
             <!-- Project 3: QuickEMS -->
             <article class="project-card">
-              <div class="project-card-top">
-                <span class="project-badge">internal suite · 2024</span>
-                <span class="project-type-tag">full-stack</span>
+              <div class="project-window-bar">
+                <div class="project-window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="project-badge">enterprise suite · 2024</span>
               </div>
               <div class="project-content">
                 <h3 class="project-title">QuickEMS</h3>
                 <p class="project-tech-stack">React / Node.js / Express / MongoDB / REST APIs</p>
-                <p class="project-description">Internal employee management platform featuring secure JWT role-based access control (RBAC), departmental tracking, and atomic attendance logging.</p>
+                <p class="project-description">Full-stack employee management platform with secure JWT role-based access control, department tracking, and automated attendance logging.</p>
                 <div class="project-actions">
                   <a href="https://polite-llama-edf38a.netlify.app/login" target="_blank" rel="noopener noreferrer" class="project-action-link">live demo <span aria-hidden="true">↗</span></a>
                   <a href="https://github.com/arpittak027/quickems" target="_blank" rel="noopener noreferrer" class="project-action-link">source code <span aria-hidden="true">↗</span></a>
@@ -349,22 +382,19 @@
             <p>say hello. i'm always interested in thoughtful products, difficult systems problems, and engineering opportunities.</p>
             
             <div class="contact-direct-email">
-              <a href="mailto:takarpit777@gmail.com?subject=Portfolio%20Inquiry%20%E2%80%94%20Arpit%20Tak" class="contact-email-address" title="Open Outlook or default mail client">takarpit777@gmail.com <span class="arrow" aria-hidden="true">↗</span></a>
+              <a href="mailto:takarpit777@gmail.com" class="contact-email-address">takarpit777@gmail.com <span class="arrow" aria-hidden="true">↗</span></a>
             </div>
 
             <div class="contact-actions-bar">
-              <a href="mailto:takarpit777@gmail.com?subject=Portfolio%20Inquiry%20%E2%80%94%20Arpit%20Tak" class="btn contact-client-btn" title="Open in Microsoft Outlook / system mail app">
-                open in outlook <span aria-hidden="true">↗</span>
-              </a>
-              <a href="https://outlook.live.com/mail/0/deeplink/compose?to=takarpit777@gmail.com&subject=Portfolio%20Inquiry%20%E2%80%94%20Arpit%20Tak" target="_blank" rel="noopener noreferrer" class="btn contact-client-btn" title="Open compose draft in Outlook Web">
-                outlook web <span aria-hidden="true">↗</span>
-              </a>
               <div class="email-copy-wrapper">
-                <button class="btn copy-email-btn contact-copy-btn" id="contact-copy-email" aria-label="Copy email address" title="Copy email address to clipboard">
+                <button class="btn copy-email-btn contact-copy-btn" id="contact-copy-email" aria-label="Copy email address">
                   copy email <span class="arrow" aria-hidden="true">↗</span>
                 </button>
                 <span class="copy-toast" id="contact-copy-toast">copied!</span>
               </div>
+              <a href="mailto:takarpit777@gmail.com" class="btn contact-client-btn">
+                send via client <span aria-hidden="true">↗</span>
+              </a>
             </div>
 
             <!-- Ayush-inspired Social Action Tiles -->
@@ -388,20 +418,13 @@
                     <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768m3.464-3.464L20 4"></path>
                   </svg>
                 </a>
-                <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="Download Résumé" title="Download Résumé">
+                <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="Download Résumé">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                     <line x1="16" y1="13" x2="8" y2="13"></line>
                     <line x1="16" y1="17" x2="8" y2="17"></line>
                     <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                </a>
-                <a href="https://hub.xerj.org/contributors/arpittak027" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="XERJ Hub Open Source Corpus" title="XERJ Hub Open Source Corpus">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
                   </svg>
                 </a>
               </div>
@@ -438,7 +461,6 @@
           <a href="https://x.com/devatx0027" target="_blank" rel="noopener noreferrer">x <span aria-hidden="true">↗</span></a>
           <a href="https://www.linkedin.com/in/arpit-tak-a865492a4/" target="_blank" rel="noopener noreferrer">linkedin <span aria-hidden="true">↗</span></a>
           <a href="https://github.com/arpittak027" target="_blank" rel="noopener noreferrer">github <span aria-hidden="true">↗</span></a>
-          <a href="https://hub.xerj.org/contributors/arpittak027" target="_blank" rel="noopener noreferrer">open source <span aria-hidden="true">↗</span></a>
           <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer">résumé <span aria-hidden="true">↗</span></a>
         </div>
       </footer>
@@ -458,6 +480,6 @@
     </nav>
   </div>
 
-  <script src="script.js?v=7.3"></script>
+  <script src="script.js?v=8.0"></script>
 </body>
 </html>
