@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=6.2">
+  <link rel="stylesheet" href="styles.css?v=7.0">
 </head>
 <body>
   <div id="top" class="site-root has-dock">
@@ -81,12 +81,12 @@
           <div class="header-copy">
             <p class="eyebrow">software engineer / full-stack systems</p>
             <h1 id="main-heading" class="heading-xl lowercase">arpit tak<span class="accent-dot" style="color: var(--accent) !important;">.</span></h1>
-            <p class="hero-intro">hi, arpit here — i design responsive web apps, real-time collaboration engines, and voice-driven systems that stay fast when real users show up.</p>
+            <p class="hero-intro">hi, arpit here — product-focused engineer designing responsive web platforms, real-time collaboration engines, and agentic AI tooling that stay fast under production load.</p>
             
             <div class="hero-links">
-              <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="text-link">résumé <span aria-hidden="true">↗</span></a>
+              <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">résumé <span aria-hidden="true">↗</span></a>
               <div class="email-copy-wrapper">
-                <button class="copy-email-btn" id="hero-copy-email" aria-label="Copy email address">
+                <button class="copy-email-btn btn-hero-secondary" id="hero-copy-email" aria-label="Copy email address">
                   email <span class="arrow" aria-hidden="true">↗</span>
                 </button>
                 <span class="copy-toast" id="hero-copy-toast">copied!</span>
@@ -95,9 +95,21 @@
           </div>
 
           <div class="hero-aside">
-            <div class="hero-photo-wrapper">
-              <img src="assets/arpit-photo.jpg" alt="Arpit Tak" class="hero-photo" width="140" height="140" loading="eager">
+            <!-- Ayush-inspired macOS Window Frame Widget -->
+            <div class="hero-photo-window">
+              <div class="window-header">
+                <div class="window-dots" aria-hidden="true">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="window-title">arpit.jpg</span>
+              </div>
+              <div class="hero-photo-wrapper">
+                <img src="assets/arpit-photo.jpg" alt="Arpit Tak" class="hero-photo" width="140" height="140" loading="eager">
+              </div>
             </div>
+
             <div class="hero-note">
               <p class="eyebrow status">bengaluru, in · available</p>
               <h2 class="hero-note-title">production web apps & agentic tools</h2>
@@ -231,68 +243,56 @@
           <div class="projects-grid">
             <!-- Project 1: Outpost -->
             <article class="project-card">
-              <div class="project-content">
-                <div class="project-meta">
-                  <span>featured workspace</span>
-                  <time>2025</time>
+              <div class="project-window-bar">
+                <div class="project-window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
                 </div>
+                <span class="project-badge">featured workspace · 2025</span>
+              </div>
+              <div class="project-content">
                 <h3 class="project-title">Outpost</h3>
+                <p class="project-tech-stack">Next.js 16 / TypeScript / Google Gemini / Supabase / tldraw</p>
                 <p class="project-description">Collaborative agentic workspace featuring an infinite whiteboard canvas integrated with AI-assisted document editing and real-time state synchronization.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">Next.js 16</li>
-                  <li class="tag">TypeScript</li>
-                  <li class="tag">Google Gemini</li>
-                  <li class="tag">Supabase</li>
-                  <li class="tag">Tailwind CSS</li>
-                  <li class="tag">tldraw</li>
-                </ul>
                 <div class="project-actions">
-                  <a href="https://outpost-arpit.netlify.app" target="_blank" rel="noopener noreferrer" class="text-link">live demo <span aria-hidden="true">↗</span></a>
-                  <a href="https://github.com/arpittak027/OUTPOST" target="_blank" rel="noopener noreferrer" class="text-link">source code <span aria-hidden="true">↗</span></a>
+                  <a href="https://outpost-arpit.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-link">live demo <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/arpittak027/OUTPOST" target="_blank" rel="noopener noreferrer" class="project-action-link">source code <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
 
             <!-- Project 2: Bolo India -->
             <article class="project-card">
-              <div class="project-content">
-                <div class="project-meta">
-                  <span>voice platform</span>
-                  <time>2025</time>
+              <div class="project-window-bar">
+                <div class="project-window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
                 </div>
+                <span class="project-badge">voice platform · 2025</span>
+              </div>
+              <div class="project-content">
                 <h3 class="project-title">Bolo India</h3>
+                <p class="project-tech-stack">Next.js / TypeScript / Web Speech API / Tailwind CSS</p>
                 <p class="project-description">Voice-first multilingual computing platform designed for low-latency speech recognition and cross-language workflows in Indian regional languages.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">Next.js</li>
-                  <li class="tag">TypeScript</li>
-                  <li class="tag">Web Speech API</li>
-                  <li class="tag">Tailwind CSS</li>
-                </ul>
                 <div class="project-actions">
-                  <a href="https://github.com/arpittak027/bolo-india" target="_blank" rel="noopener noreferrer" class="text-link">source code <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/arpittak027/bolo-india" target="_blank" rel="noopener noreferrer" class="project-action-link">source code <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
 
             <!-- Project 3: QuickEMS -->
             <article class="project-card">
-              <div class="project-content">
-                <div class="project-meta">
-                  <span>enterprise suite</span>
-                  <time>2024</time>
+              <div class="project-window-bar">
+                <div class="project-window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
                 </div>
+                <span class="project-badge">enterprise suite · 2024</span>
+              </div>
+              <div class="project-content">
                 <h3 class="project-title">QuickEMS</h3>
+                <p class="project-tech-stack">React / Node.js / Express / MongoDB / REST APIs</p>
                 <p class="project-description">Full-stack employee management platform with secure JWT role-based access control, department tracking, and automated attendance logging.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">React</li>
-                  <li class="tag">Node.js</li>
-                  <li class="tag">Express</li>
-                  <li class="tag">MongoDB</li>
-                  <li class="tag">REST APIs</li>
-                </ul>
                 <div class="project-actions">
-                  <a href="https://polite-llama-edf38a.netlify.app/login" target="_blank" rel="noopener noreferrer" class="text-link">live demo <span aria-hidden="true">↗</span></a>
-                  <a href="https://github.com/arpittak027/quickems" target="_blank" rel="noopener noreferrer" class="text-link">source code <span aria-hidden="true">↗</span></a>
+                  <a href="https://polite-llama-edf38a.netlify.app/login" target="_blank" rel="noopener noreferrer" class="project-action-link">live demo <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/arpittak027/quickems" target="_blank" rel="noopener noreferrer" class="project-action-link">source code <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
@@ -379,7 +379,7 @@
           <div class="contact-copy">
             <div class="section-label"><span>06</span> contact</div>
             <h2 id="contact-heading" class="contact-title">have something<br>worth building<span class="accent-dot" style="color: var(--accent) !important;">?</span></h2>
-            <p>say hello. i'm always interested in thoughtful products and difficult systems problems.</p>
+            <p>say hello. i'm always interested in thoughtful products, difficult systems problems, and engineering opportunities.</p>
             
             <div class="contact-direct-email">
               <a href="mailto:takarpit777@gmail.com" class="contact-email-address">takarpit777@gmail.com <span class="arrow" aria-hidden="true">↗</span></a>
@@ -395,6 +395,39 @@
               <a href="mailto:takarpit777@gmail.com" class="btn contact-client-btn">
                 send via client <span aria-hidden="true">↗</span>
               </a>
+            </div>
+
+            <!-- Ayush-inspired Social Action Tiles -->
+            <div class="contact-social-section">
+              <p class="social-label">follow / find me</p>
+              <div class="social-tiles">
+                <a href="https://github.com/arpittak027" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="GitHub Profile">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/arpit-tak-a865492a4/" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="LinkedIn Profile">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+                <a href="https://x.com/devatx0027" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="X Profile">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768m3.464-3.464L20 4"></path>
+                  </svg>
+                </a>
+                <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="social-tile" aria-label="Download Résumé">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -413,7 +446,7 @@
               your message
               <textarea class="input textarea" name="message" required placeholder="tell me about what you are building..."></textarea>
             </label>
-            <button type="submit" class="btn submit-message-btn" id="submit-btn">
+            <button type="submit" class="btn-submit" id="submit-btn">
               send message <span aria-hidden="true">↗</span>
             </button>
             <p class="form-result" id="form-result" aria-live="polite"></p>
@@ -447,6 +480,6 @@
     </nav>
   </div>
 
-  <script src="script.js?v=6.2"></script>
+  <script src="script.js?v=7.0"></script>
 </body>
 </html>
