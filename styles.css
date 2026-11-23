@@ -687,6 +687,18 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
   margin-top: .6rem;
 }
 
+.about-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.about-links .text-link {
+  margin-top: 0;
+}
+
 /* Heatmap Component */
 .heatmap {
   display: grid;
@@ -1136,6 +1148,7 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
 .project-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 1.4rem;
   padding-top: 1rem;
