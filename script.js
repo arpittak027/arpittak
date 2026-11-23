@@ -32,35 +32,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------
-  // 2. Secret Email Copy Tooltip & Mailto
+  // 2. Email Actions: Open Outlook & Copy Fallback
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
+  const defaultSubject = encodeURIComponent('Portfolio Inquiry — Arpit Tak');
+  const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
 
-  function setupEmailCopy(buttonId, toastId) {
-    const btn = document.getElementById(buttonId);
-    const toast = document.getElementById(toastId);
-    if (!btn || !toast) return;
+  const heroEmailBtn = document.getElementById('hero-email-btn');
+  const heroToast = document.getElementById('hero-copy-toast');
 
-    let toastTimer = null;
-    btn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      try {
-        await navigator.clipboard.writeText(emailAddress);
-        toast.textContent = 'copied!';
-        toast.classList.add('is-active');
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-          toast.classList.remove('is-active');
-        }, 2200);
-      } catch (err) {
-        // Fallback for older browsers
-        window.location.href = `mailto:${emailAddress}`;
+  if (heroEmailBtn) {
+    heroEmailBtn.addEventListener('click', () => {
+      // Quietly copy email to clipboard as convenience
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(emailAddress).catch(() => {});
       }
+      if (heroToast) {
+        heroToast.textContent = 'opening outlook...';
+        heroToast.classList.add('is-active');
+        setTimeout(() => {
+          heroToast.classList.remove('is-active');
+        }, 2500);
+      }
+      // Note: Do not preventDefault; browser directly invokes mailto: opening Outlook
     });
   }
 
-  setupEmailCopy('hero-copy-email', 'hero-copy-toast');
-  setupEmailCopy('contact-copy-email', 'contact-copy-toast');
+  const contactCopyBtn = document.getElementById('contact-copy-email');
+  const contactToast = document.getElementById('contact-copy-toast');
+
+  if (contactCopyBtn && contactToast) {
+    let toastTimer = null;
+    contactCopyBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+        await navigator.clipboard.writeText(emailAddress);
+        contactToast.textContent = 'copied!';
+        contactToast.classList.add('is-active');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          contactToast.classList.remove('is-active');
+        }, 2200);
+      } catch (err) {
+        window.location.href = mailtoUrl;
+      }
+    });
+  }
 
   // ----------------------------------------------------
   // 3. Floating Dock Scroll Progress & Section Spy
