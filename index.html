@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=9.5">
+  <link rel="stylesheet" href="styles.css?v=9.6">
 </head>
 <body>
   <div id="top" class="site-root has-dock">
@@ -55,6 +55,7 @@
               <a href="#projects">projects</a>
               <a href="#education">education</a>
               <a href="#skills">toolkit</a>
+              <a href="#reading">reading</a>
               <a href="#contact">contact</a>
             </nav>
             
@@ -118,7 +119,7 @@
                 <p class="about-lead">full-stack engineer | b.e. computer science graduate</p>
                 <p>i graduated with a b.e. in computer science and engineering from visvesvaraya technological university (acharya institute of technology), bengaluru.</p>
                 <p>i care about shipping software that feels fast, works reliably, and is straightforward to maintain. rather than chasing every new framework, i focus on solid fundamentals: clean database schemas, predictable state, and accessible interfaces.</p>
-                <p>lately, i have been building interactive systems and voice-driven software: outpost, a real-time collaborative workspace that combines an infinite canvas with ai document editing, seathru, an aesthetic 3d bookshelf platform for curated reading, and bolo india, a voice-first platform tailored for indian multilingual workflows.</p>
+                <p>lately, i have been building interactive systems and voice-driven software: outpost, a real-time collaborative workspace that combines an infinite canvas with ai document editing, and bolo india, a voice-first platform tailored for indian multilingual workflows.</p>
                 <a class="text-link" href="https://github.com/arpittak027" target="_blank" rel="noopener noreferrer">view github profile <span aria-hidden="true">↗</span></a>
               </div>
             </div>
@@ -207,7 +208,6 @@
 
                     <ul class="experience-highlights">
                       <li>Architected Outpost, an agentic AI workspace unifying infinite tldraw whiteboarding and document editing with Supabase Realtime channels.</li>
-                      <li>Developed SeaThru, an interactive 3D digital bookshelf platform integrating Open Library APIs and Vercel Blob storage for visual literary curation.</li>
                       <li>Engineered Bolo India, a low-latency voice-first multilingual platform for Indian regional languages using Web Speech API with zero audio upload overhead.</li>
                       <li>Built QuickEMS, an end-to-end employee management system with JWT role-based access control and atomic attendance logging.</li>
                       <li>Implemented containerized deployments and CI/CD pipelines with zero secrets committed and automated health-check verification.</li>
@@ -254,30 +254,7 @@
               </div>
             </article>
 
-            <!-- Project 2: SeaThru -->
-            <article class="project-card">
-              <div class="project-content">
-                <div class="project-meta">
-                  <span>curated bookshelf</span>
-                  <time>2025</time>
-                </div>
-                <h3 class="project-title">SeaThru</h3>
-                <p class="project-description">Shelves of the books that matter. An aesthetic digital library and curated 3D bookshelf platform featuring visual cover discovery and reader-curated collections.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">Next.js</li>
-                  <li class="tag">TypeScript</li>
-                  <li class="tag">Tailwind CSS</li>
-                  <li class="tag">3D Canvas</li>
-                  <li class="tag">Vercel Blob</li>
-                  <li class="tag">Open Library API</li>
-                </ul>
-                <div class="project-actions">
-                  <a href="https://seathru.app/" target="_blank" rel="noopener noreferrer" class="text-link">live preview <span aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Project 3: Bolo India -->
+            <!-- Project 2: Bolo India -->
             <article class="project-card">
               <div class="project-content">
                 <div class="project-meta">
@@ -298,7 +275,7 @@
               </div>
             </article>
 
-            <!-- Project 4: QuickEMS -->
+            <!-- Project 3: QuickEMS -->
             <article class="project-card">
               <div class="project-content">
                 <div class="project-meta">
@@ -398,10 +375,83 @@
           </div>
         </section>
 
-        <!-- 06 / CONTACT -->
+        <!-- 06 / READING -->
+        <section id="reading" class="section" aria-labelledby="reading-heading">
+          <div class="section-heading">
+            <div class="section-label"><span>06</span> reading</div>
+            <div>
+              <h2 id="reading-heading" class="section-title">books to read<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
+              <p class="section-intro">volumes on distributed architecture, cognitive focus, and systems craft · shelves on <a href="https://seathru.app/" target="_blank" rel="noopener noreferrer" class="text-link">seathru.app <span aria-hidden="true">↗</span></a>.</p>
+            </div>
+          </div>
+
+          <div class="books-grid">
+            <!-- Book 1 -->
+            <article class="book-card">
+              <div class="book-content">
+                <div class="book-meta">
+                  <span class="book-status">to read</span>
+                  <span class="book-index">01</span>
+                </div>
+                <h3 class="book-title">Designing Data-Intensive Applications</h3>
+                <p class="book-author">Martin Kleppmann</p>
+                <p class="book-description">The foundational blueprint for distributed data systems, replication models, consensus protocols, and fault-tolerant architecture.</p>
+                <ul class="tag-list" aria-label="Book topics">
+                  <li class="tag">Distributed Systems</li>
+                  <li class="tag">Data Architecture</li>
+                </ul>
+                <div class="book-actions">
+                  <a href="https://seathru.app/" target="_blank" rel="noopener noreferrer" class="text-link">view on seathru <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Book 2 -->
+            <article class="book-card">
+              <div class="book-content">
+                <div class="book-meta">
+                  <span class="book-status">to read</span>
+                  <span class="book-index">02</span>
+                </div>
+                <h3 class="book-title">Deep Work</h3>
+                <p class="book-author">Cal Newport</p>
+                <p class="book-description">Rules for focused success in a distracted world. Developing high-depth cognitive focus to master difficult tools and solve complex engineering problems.</p>
+                <ul class="tag-list" aria-label="Book topics">
+                  <li class="tag">Deep Focus</li>
+                  <li class="tag">Engineering Craft</li>
+                </ul>
+                <div class="book-actions">
+                  <a href="https://seathru.app/" target="_blank" rel="noopener noreferrer" class="text-link">view on seathru <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Book 3 -->
+            <article class="book-card">
+              <div class="book-content">
+                <div class="book-meta">
+                  <span class="book-status">to read</span>
+                  <span class="book-index">03</span>
+                </div>
+                <h3 class="book-title">Atomic Habits</h3>
+                <p class="book-author">James Clear</p>
+                <p class="book-description">Small habits, remarkable compounding gains. Designing daily deliberate systems and iterative feedback loops for sustained long-term growth.</p>
+                <ul class="tag-list" aria-label="Book topics">
+                  <li class="tag">Systems Thinking</li>
+                  <li class="tag">Compound Growth</li>
+                </ul>
+                <div class="book-actions">
+                  <a href="https://seathru.app/" target="_blank" rel="noopener noreferrer" class="text-link">view on seathru <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 07 / CONTACT -->
         <section id="contact" class="contact-section" aria-labelledby="contact-heading">
           <div class="contact-copy">
-            <div class="section-label"><span>06</span> contact</div>
+            <div class="section-label"><span>07</span> contact</div>
             <h2 id="contact-heading" class="contact-title">have something<br>worth building<span class="accent-dot" style="color: var(--accent) !important;">?</span></h2>
             <p>say hello. i'm always interested in thoughtful products and difficult systems problems.</p>
             
@@ -466,11 +516,12 @@
         <li><a class="dock-item" href="#projects"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">projects</span></a></li>
         <li><a class="dock-item" href="#education"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">education</span></a></li>
         <li><a class="dock-item" href="#skills"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">toolkit</span></a></li>
+        <li><a class="dock-item" href="#reading"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">reading</span></a></li>
         <li><a class="dock-item" href="#contact"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">contact</span></a></li>
       </ol>
     </nav>
   </div>
 
-  <script src="script.js?v=9.5"></script>
+  <script src="script.js?v=9.6"></script>
 </body>
 </html>

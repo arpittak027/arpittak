@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dock = document.getElementById('dock');
   const dockProgress = document.getElementById('dock-progress');
   const dockLinks = document.querySelectorAll('.dock-item');
-  const checkpoints = ['about', 'experience', 'projects', 'education', 'skills', 'contact'];
+  const checkpoints = ['about', 'experience', 'projects', 'education', 'skills', 'reading', 'contact'];
 
   let ticking = false;
 

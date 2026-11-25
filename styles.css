@@ -994,8 +994,8 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
    -------------------------------------------------------------------------- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.5rem 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
 }
 
 .project-card {
@@ -1153,7 +1153,109 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
 }
 
 /* --------------------------------------------------------------------------
-   15. Section 06: Contact Section (Crystal-Clear Contrast in Both Modes)
+   15. Section 06: Books to Read / Bookshelf (SeaThru)
+   -------------------------------------------------------------------------- */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 1.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  transition: border-color .2s ease, transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.book-card:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.book-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.book-meta {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .85rem;
+}
+
+.book-status {
+  font-family: var(--mono);
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--status-green);
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+.book-status:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--status-green);
+  box-shadow: 0 0 6px var(--status-green);
+}
+
+.book-index {
+  font-family: var(--mono);
+  font-size: .65rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.book-title {
+  margin: 0;
+  font-family: 'Newsreader', ui-serif, Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.book-author {
+  margin: .35rem 0 0;
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--muted);
+  letter-spacing: .02em;
+}
+
+.book-description {
+  margin: .85rem 0 0;
+  color: var(--ink-soft);
+  font-size: .88rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.book-actions {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   16. Section 07: Contact Section (Crystal-Clear Contrast in Both Modes)
    -------------------------------------------------------------------------- */
 .contact-section {
   display: grid;
@@ -1539,7 +1641,8 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
     height: 125px;
     margin-bottom: 1.2rem;
   }
-  .projects-grid {
+  .projects-grid,
+  .books-grid {
     grid-template-columns: 1fr;
     gap: 2.25rem;
   }
