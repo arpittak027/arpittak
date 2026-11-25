@@ -38,29 +38,41 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------
-  // 2. Email Actions: Open Outlook & Copy Fallback
+  // 2. Email Actions: Open Outlook App (Cross-Device) & Copy Fallback
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
   const defaultSubject = encodeURIComponent('Portfolio Inquiry · Arpit Tak');
+  const outlookAppUrl = `ms-outlook://compose?to=${emailAddress}&subject=${defaultSubject}`;
   const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
 
   const heroEmailBtn = document.getElementById('hero-email-btn');
-  const heroToast = document.getElementById('hero-copy-toast');
 
   if (heroEmailBtn) {
-    heroEmailBtn.addEventListener('click', () => {
-      // Quietly copy email to clipboard as convenience
+    heroEmailBtn.addEventListener('click', (e) => {
+      // Quietly copy email address to clipboard in background (no annoying popup message)
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(emailAddress).catch(() => {});
       }
-      if (heroToast) {
-        heroToast.textContent = 'opening outlook...';
-        heroToast.classList.add('is-active');
-        setTimeout(() => {
-          heroToast.classList.remove('is-active');
-        }, 2500);
-      }
-      // Note: Do not preventDefault; browser directly invokes mailto: opening Outlook
+
+      let appOpened = false;
+      const onBlur = () => {
+        appOpened = true;
+        window.removeEventListener('blur', onBlur);
+      };
+      window.addEventListener('blur', onBlur);
+
+      // Attempt to launch Outlook app directly
+      window.location.href = outlookAppUrl;
+
+      // Fallback: If after 1.5s the window still has focus (meaning Outlook app is not installed)
+      setTimeout(() => {
+        window.removeEventListener('blur', onBlur);
+        if (!appOpened && document.hasFocus()) {
+          window.location.href = mailtoUrl;
+        }
+      }, 1500);
+
+      e.preventDefault();
     });
   }
 
