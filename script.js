@@ -38,75 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------
-  // 2. Email Actions: Hero Popover (Gmail, Outlook, Default Mail, Copy) & Contact Section
+  // 2. Direct Email Actions (Native Outlook / Gmail App) & Copy
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
   const defaultSubject = encodeURIComponent('Portfolio Inquiry · Arpit Tak');
+  const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
 
   const heroEmailBtn = document.getElementById('hero-email-btn');
-  const emailPopover = document.getElementById('email-popover');
-  const emailPopoverClose = document.getElementById('email-popover-close');
-  const popoverCopyBtn = document.getElementById('popover-copy-btn');
-  const popoverCopyLabel = document.getElementById('popover-copy-label');
-
-  if (heroEmailBtn && emailPopover) {
-    const togglePopover = (show) => {
-      const isCurrentlyHidden = emailPopover.hasAttribute('hidden');
-      const shouldShow = show !== undefined ? show : isCurrentlyHidden;
-
-      if (shouldShow) {
-        emailPopover.removeAttribute('hidden');
-        heroEmailBtn.setAttribute('aria-expanded', 'true');
-        // Quietly copy email address to clipboard in background as extra convenience
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(emailAddress).catch(() => {});
-        }
-      } else {
-        emailPopover.setAttribute('hidden', '');
-        heroEmailBtn.setAttribute('aria-expanded', 'false');
+  if (heroEmailBtn) {
+    heroEmailBtn.addEventListener('click', () => {
+      // Quietly copy email address to clipboard as a convenience
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(emailAddress).catch(() => {});
       }
-    };
-
-    heroEmailBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      e.preventDefault();
-      togglePopover();
-    });
-
-    if (emailPopoverClose) {
-      emailPopoverClose.addEventListener('click', (e) => {
-        e.stopPropagation();
-        togglePopover(false);
-      });
-    }
-
-    if (popoverCopyBtn) {
-      popoverCopyBtn.addEventListener('click', async (e) => {
-        e.stopPropagation();
-        try {
-          await navigator.clipboard.writeText(emailAddress);
-          if (popoverCopyLabel) {
-            popoverCopyLabel.textContent = 'copied! ✓';
-            setTimeout(() => {
-              popoverCopyLabel.textContent = 'copy';
-            }, 2000);
-          }
-        } catch (_) {}
-      });
-    }
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!emailPopover.hasAttribute('hidden') && !emailPopover.contains(e.target) && e.target !== heroEmailBtn) {
-        togglePopover(false);
-      }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !emailPopover.hasAttribute('hidden')) {
-        togglePopover(false);
-      }
+      // Note: Native browser mailto navigation happens directly via href without e.preventDefault()
     });
   }
 
