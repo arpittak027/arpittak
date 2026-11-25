@@ -38,41 +38,75 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------
-  // 2. Email Actions: Open Outlook App (Cross-Device) & Copy Fallback
+  // 2. Email Actions: Hero Popover (Gmail, Outlook, Default Mail, Copy) & Contact Section
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
   const defaultSubject = encodeURIComponent('Portfolio Inquiry · Arpit Tak');
-  const outlookAppUrl = `ms-outlook://compose?to=${emailAddress}&subject=${defaultSubject}`;
-  const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
 
   const heroEmailBtn = document.getElementById('hero-email-btn');
+  const emailPopover = document.getElementById('email-popover');
+  const emailPopoverClose = document.getElementById('email-popover-close');
+  const popoverCopyBtn = document.getElementById('popover-copy-btn');
+  const popoverCopyLabel = document.getElementById('popover-copy-label');
 
-  if (heroEmailBtn) {
-    heroEmailBtn.addEventListener('click', (e) => {
-      // Quietly copy email address to clipboard in background (no annoying popup message)
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(emailAddress).catch(() => {});
-      }
+  if (heroEmailBtn && emailPopover) {
+    const togglePopover = (show) => {
+      const isCurrentlyHidden = emailPopover.hasAttribute('hidden');
+      const shouldShow = show !== undefined ? show : isCurrentlyHidden;
 
-      let appOpened = false;
-      const onBlur = () => {
-        appOpened = true;
-        window.removeEventListener('blur', onBlur);
-      };
-      window.addEventListener('blur', onBlur);
-
-      // Attempt to launch Outlook app directly
-      window.location.href = outlookAppUrl;
-
-      // Fallback: If after 1.5s the window still has focus (meaning Outlook app is not installed)
-      setTimeout(() => {
-        window.removeEventListener('blur', onBlur);
-        if (!appOpened && document.hasFocus()) {
-          window.location.href = mailtoUrl;
+      if (shouldShow) {
+        emailPopover.removeAttribute('hidden');
+        heroEmailBtn.setAttribute('aria-expanded', 'true');
+        // Quietly copy email address to clipboard in background as extra convenience
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(emailAddress).catch(() => {});
         }
-      }, 1500);
+      } else {
+        emailPopover.setAttribute('hidden', '');
+        heroEmailBtn.setAttribute('aria-expanded', 'false');
+      }
+    };
 
+    heroEmailBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       e.preventDefault();
+      togglePopover();
+    });
+
+    if (emailPopoverClose) {
+      emailPopoverClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePopover(false);
+      });
+    }
+
+    if (popoverCopyBtn) {
+      popoverCopyBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        try {
+          await navigator.clipboard.writeText(emailAddress);
+          if (popoverCopyLabel) {
+            popoverCopyLabel.textContent = 'copied! ✓';
+            setTimeout(() => {
+              popoverCopyLabel.textContent = 'copy';
+            }, 2000);
+          }
+        } catch (_) {}
+      });
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!emailPopover.hasAttribute('hidden') && !emailPopover.contains(e.target) && e.target !== heroEmailBtn) {
+        togglePopover(false);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !emailPopover.hasAttribute('hidden')) {
+        togglePopover(false);
+      }
     });
   }
 
@@ -92,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
           contactToast.classList.remove('is-active');
         }, 2200);
       } catch (err) {
-        window.location.href = mailtoUrl;
+        window.location.href = `mailto:${emailAddress}?subject=${defaultSubject}`;
       }
     });
   }

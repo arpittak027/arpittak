@@ -417,6 +417,229 @@ textarea {
   transform: translate(2px, -2px);
 }
 
+/* --------------------------------------------------------------------------
+   Email Popover Menu (Gmail, Outlook, Default Mail, Copy)
+   -------------------------------------------------------------------------- */
+.email-modal-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.email-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer !important;
+}
+
+.email-trigger .arrow {
+  color: var(--accent);
+  transition: transform .16s ease;
+}
+
+.email-trigger:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+.email-popover {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  width: 290px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 0.85rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  animation: popoverFadeIn 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.email-popover[hidden] {
+  display: none !important;
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.email-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.email-popover-title {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.email-popover-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 0.15rem 0.35rem;
+  cursor: pointer !important;
+  border-radius: 4px;
+  line-height: 1;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.email-popover-close:hover {
+  color: var(--ink);
+  background: var(--line);
+}
+
+.email-popover-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.email-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer !important;
+  transition: background-color 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+
+.email-option-btn:hover {
+  background: var(--line);
+  border-color: var(--line-strong);
+  transform: translateX(2px);
+}
+
+.email-option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.email-option-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.email-option-text strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.email-option-text small {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  color: var(--muted);
+}
+
+.email-option-btn .arrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  transition: transform 0.16s ease;
+}
+
+.email-option-btn:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+.email-popover-footer {
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.email-copy-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border-radius: 6px;
+  border: 1px dashed var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  cursor: pointer !important;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.email-copy-bar:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.email-copy-addr {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.email-copy-action {
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .email-popover {
+    position: fixed;
+    top: auto;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: 360px;
+    margin: 0 auto;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.75);
+  }
+}
+
 /* Hero Aside */
 .hero-aside {
   display: flex;
