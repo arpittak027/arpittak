@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ARPIT TAK — FULL-STACK SYSTEMS ENGINEER
+   ARPIT TAK · FULL-STACK SYSTEMS ENGINEER
    Pristine, bug-free editorial design system.
    ========================================================================== */
 
@@ -402,14 +402,42 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
   border-top: 1px solid var(--line-strong);
 }
 
-/* Clean Single Pulsing Green Status Dot */
-.status {
-  display: flex;
+/* Clean Medicine Pill Shape Status Button */
+.status,
+.status-pill {
+  display: inline-flex;
   align-items: center;
   gap: .55rem;
+  padding: .35rem .85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-raised);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
-.status:before {
+.status-pill:hover,
+.status-pill:focus-visible,
+.status:hover,
+.status:focus-visible {
+  border-color: var(--status-green);
+  color: var(--ink);
+  background: var(--surface);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.15);
+  outline: none;
+}
+
+.status:before,
+.status-pill:before {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -421,9 +449,29 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
 }
 
 .status:after,
-.status .status-dot {
+.status .status-dot,
+.status-pill:after,
+.status-pill .status-dot {
   display: none !important;
   content: none !important;
+}
+
+:root.light-mode .status,
+:root.light-mode .status-pill {
+  background: #f1f1ee;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #57534e;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+:root.light-mode .status-pill:hover,
+:root.light-mode .status-pill:focus-visible,
+:root.light-mode .status:hover,
+:root.light-mode .status:focus-visible {
+  background: #ffffff;
+  border-color: var(--status-green);
+  color: #1c1917;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.15);
 }
 
 @keyframes status-pulse {

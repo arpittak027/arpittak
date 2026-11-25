@@ -1,4 +1,4 @@
-# Arpit Tak — Portfolio
+# Arpit Tak · Portfolio
 
 Personal portfolio and software engineering showcase. Built with clean semantic HTML5, modern CSS, and vanilla JavaScript with zero runtime dependencies.
 

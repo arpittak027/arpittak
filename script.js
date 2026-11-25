@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Email Actions: Open Outlook & Copy Fallback
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
-  const defaultSubject = encodeURIComponent('Portfolio Inquiry — Arpit Tak');
+  const defaultSubject = encodeURIComponent('Portfolio Inquiry · Arpit Tak');
   const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
 
   const heroEmailBtn = document.getElementById('hero-email-btn');
