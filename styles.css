@@ -7,19 +7,19 @@
    1. Design Tokens & Theme Variables
    -------------------------------------------------------------------------- */
 :root {
-  --canvas: #151514;
-  --surface: #1d1d1b;
-  --surface-raised: #252522;
-  --ink: #f3f0e9;
-  --ink-soft: #cbc6bd;
-  --muted: #918b80;
-  --line: rgba(243, 240, 233, .15);
-  --line-strong: rgba(243, 240, 233, .35);
+  --canvas: #050505;
+  --surface: #0e0e0e;
+  --surface-raised: #161616;
+  --ink: #f5f5f7;
+  --ink-soft: #d1d1d6;
+  --muted: #888891;
+  --line: rgba(255, 255, 255, .09);
+  --line-strong: rgba(255, 255, 255, .20);
   --accent: #3b82f6;
   --accent-2: #60a5fa;
   --focus: #3b82f6;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --grid-dot: rgba(243, 240, 233, .085);
+  --grid-dot: rgba(255, 255, 255, .055);
   --status-green: #10b981;
 }
 
@@ -228,8 +228,8 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
   height: 32px;
   padding: 3px;
   border-radius: 9999px;
-  background-color: #1a1a18;
-  border: 1px solid rgba(243, 240, 233, 0.18);
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   cursor: pointer;
   user-select: none;
   outline: none;
@@ -248,9 +248,9 @@ a, button, [role="button"], .dock-item, .theme-switch, .text-link, .copy-email-b
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #242422;
-  border: 1px solid rgba(243, 240, 233, 0.24);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
   transform: translateX(30px); /* Default Dark: Over Moon on right */
   transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease, border-color 0.2s ease;
   z-index: 1;

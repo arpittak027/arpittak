@@ -9,18 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize theme
   const savedTheme = localStorage.getItem('theme');
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
   if (savedTheme === 'light') {
     root.classList.add('light-mode');
     themeSwitch.setAttribute('aria-checked', 'false');
+    if (metaTheme) metaTheme.setAttribute('content', '#f3f0e9');
   } else {
     root.classList.remove('light-mode');
     themeSwitch.setAttribute('aria-checked', 'true');
+    if (metaTheme) metaTheme.setAttribute('content', '#050505');
   }
 
   themeSwitch.addEventListener('click', () => {
     const isLight = root.classList.toggle('light-mode');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
     themeSwitch.setAttribute('aria-checked', (!isLight).toString());
+    if (metaTheme) {
+      metaTheme.setAttribute('content', isLight ? '#f3f0e9' : '#050505');
+    }
   });
 
   // Keyboard shortcut: Press 'd' to toggle theme
