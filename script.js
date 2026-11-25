@@ -38,22 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------------------------------------------
-  // 2. Direct Email Actions (Native Outlook / Gmail App) & Copy
+  // 2. Email Copy Fallback for Contact Section
   // ----------------------------------------------------
   const emailAddress = 'takarpit777@gmail.com';
   const defaultSubject = encodeURIComponent('Portfolio Inquiry · Arpit Tak');
   const mailtoUrl = `mailto:${emailAddress}?subject=${defaultSubject}`;
-
-  const heroEmailBtn = document.getElementById('hero-email-btn');
-  if (heroEmailBtn) {
-    heroEmailBtn.addEventListener('click', () => {
-      // Quietly copy email address to clipboard as a convenience
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(emailAddress).catch(() => {});
-      }
-      // Note: Native browser mailto navigation happens directly via href without e.preventDefault()
-    });
-  }
 
   const contactCopyBtn = document.getElementById('contact-copy-email');
   const contactToast = document.getElementById('contact-copy-toast');
