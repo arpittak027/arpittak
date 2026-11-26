@@ -37,10 +37,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=10.2">
+  <link rel="stylesheet" href="styles.css?v=11.1">
 </head>
 <body>
-  <div id="top" class="site-root has-dock">
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <div id="top" class="site-root">
     <div class="container">
       
       <!-- Topbar & Hero Header -->
@@ -80,8 +81,8 @@
         <div class="hero-grid">
           <div class="header-copy">
             <p class="eyebrow">software engineer / full-stack systems</p>
-            <h1 id="main-heading" class="heading-xl lowercase">arpit tak<span class="accent-dot" style="color: var(--accent) !important;">.</span></h1>
-            <p class="hero-intro">hi, arpit here. i design responsive web apps, real-time collaboration engines, and voice-driven systems that stay fast when real users show up.</p>
+            <h1 id="main-heading" class="heading-xl">arpit tak<span class="accent-dot" style="color: var(--accent) !important;">.</span></h1>
+            <p class="hero-intro">Hi, I'm Arpit. I design and build resilient web applications, real-time collaboration engines, and voice-driven systems that stay fast when real users show up.</p>
             
             <div class="hero-links">
               <a href="https://drive.google.com/file/d/1LOafilZkup5HmpAJfRjU-dZoe10NB0tG/view" target="_blank" rel="noopener noreferrer" class="text-link">résumé <span aria-hidden="true">↗</span></a>
@@ -93,7 +94,7 @@
 
           <div class="hero-aside">
             <div class="hero-photo-wrapper">
-              <img src="assets/arpit-photo.jpg" alt="Arpit Tak" class="hero-photo" width="140" height="140" loading="eager">
+              <img src="assets/arpit-photo.jpg" alt="Arpit Tak" class="hero-photo" width="148" height="148" loading="eager">
             </div>
             <div class="hero-note">
               <a href="#contact" class="status status-pill" aria-label="Available for work in Bengaluru · Contact Arpit" title="Available for work · Get in touch">bengaluru, in · available</a>
@@ -112,10 +113,10 @@
             <div>
               <h2 id="about-heading" class="section-title">background & craft<span class="accent-dot" style="color: var(--accent) !important;">.</span></h2>
               <div class="about-body">
-                <p class="about-lead">full-stack engineer | b.e. computer science graduate</p>
-                <p>i graduated with a b.e. in computer science and engineering from visvesvaraya technological university (acharya institute of technology), bengaluru.</p>
-                <p>i care about shipping software that feels fast, works reliably, and is straightforward to maintain. rather than chasing every new framework, i focus on solid fundamentals: clean database schemas, predictable state, and accessible interfaces.</p>
-                <p>lately, i have been building interactive systems and voice-driven software: outpost, a real-time collaborative workspace that combines an infinite canvas with ai document editing, and bolo india, a voice-first platform tailored for indian multilingual workflows.</p>
+                <p class="about-lead">Full-Stack Systems Engineer · B.E. Computer Science Graduate</p>
+                <p>I graduated with a B.E. in Computer Science and Engineering from Visvesvaraya Technological University (Acharya Institute of Technology), Bengaluru.</p>
+                <p>I care about shipping software that feels fast, works reliably, and is straightforward to maintain. Rather than chasing ephemeral hype, I invest in solid fundamentals: clean database schemas, predictable state synchronization, and accessible interfaces.</p>
+                <p>Lately, I have been building interactive systems and voice-driven software: Outpost, a real-time collaborative workspace unifying an infinite canvas with AI document editing, and Bolo India, a low-latency voice-first platform tailored for Indian multilingual workflows.</p>
                 <a class="text-link" href="https://github.com/arpittak027" target="_blank" rel="noopener noreferrer">view github profile <span aria-hidden="true">↗</span></a>
               </div>
             </div>
@@ -180,8 +181,10 @@
                     </header>
 
                     <div class="initiative">
-                      <p class="initiative-label">featured architecture</p>
-                      <p><strong>Outpost</strong> · collaborative infinite canvas + agentic workspace</p>
+                      <div class="initiative-header">
+                        <p class="initiative-label">featured architecture</p>
+                        <p class="initiative-title"><strong>Outpost</strong> · collaborative infinite canvas + agentic workspace</p>
+                      </div>
                       <dl class="initiative-metrics">
                         <div>
                           <dt>0ms</dt>
@@ -230,18 +233,18 @@
             <article class="project-card">
               <div class="project-content">
                 <div class="project-meta">
-                  <span>featured workspace</span>
-                  <time>2025</time>
+                  <span class="project-badge">01 // Agentic Workspace</span>
+                  <time class="project-year">2025</time>
                 </div>
                 <h3 class="project-title">Outpost</h3>
                 <p class="project-description">Collaborative agentic workspace featuring an infinite whiteboard canvas integrated with AI-assisted document editing and real-time state synchronization.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">Next.js 16</li>
-                  <li class="tag">TypeScript</li>
-                  <li class="tag">Google Gemini</li>
-                  <li class="tag">Supabase</li>
-                  <li class="tag">Tailwind CSS</li>
-                  <li class="tag">tldraw</li>
+                <ul class="project-tags" aria-label="Tech stack">
+                  <li>Next.js 16</li>
+                  <li>TypeScript</li>
+                  <li>Google Gemini</li>
+                  <li>Supabase</li>
+                  <li>Tailwind CSS</li>
+                  <li>tldraw</li>
                 </ul>
                 <div class="project-actions">
                   <a href="https://outpost-arpit.netlify.app" target="_blank" rel="noopener noreferrer" class="text-link">live demo <span aria-hidden="true">↗</span></a>
@@ -254,16 +257,17 @@
             <article class="project-card">
               <div class="project-content">
                 <div class="project-meta">
-                  <span>voice platform</span>
-                  <time>2025</time>
+                  <span class="project-badge">02 // Speech AI Platform</span>
+                  <time class="project-year">2025</time>
                 </div>
                 <h3 class="project-title">Bolo India</h3>
                 <p class="project-description">Voice-first multilingual computing platform designed for low-latency speech recognition and cross-language workflows in Indian regional languages.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">Next.js</li>
-                  <li class="tag">TypeScript</li>
-                  <li class="tag">Web Speech API</li>
-                  <li class="tag">Tailwind CSS</li>
+                <ul class="project-tags" aria-label="Tech stack">
+                  <li>Next.js</li>
+                  <li>TypeScript</li>
+                  <li>Web Speech API</li>
+                  <li>Tailwind CSS</li>
+                  <li>Audio Processing</li>
                 </ul>
                 <div class="project-actions">
                   <a href="https://github.com/arpittak027/bolo-india" target="_blank" rel="noopener noreferrer" class="text-link">source code <span aria-hidden="true">↗</span></a>
@@ -275,17 +279,18 @@
             <article class="project-card">
               <div class="project-content">
                 <div class="project-meta">
-                  <span>enterprise suite</span>
-                  <time>2024</time>
+                  <span class="project-badge">03 // Enterprise Management</span>
+                  <time class="project-year">2024</time>
                 </div>
                 <h3 class="project-title">QuickEMS</h3>
                 <p class="project-description">Full-stack employee management platform with secure JWT role-based access control, department tracking, and automated attendance logging.</p>
-                <ul class="tag-list" aria-label="Tech stack">
-                  <li class="tag">React</li>
-                  <li class="tag">Node.js</li>
-                  <li class="tag">Express</li>
-                  <li class="tag">MongoDB</li>
-                  <li class="tag">REST APIs</li>
+                <ul class="project-tags" aria-label="Tech stack">
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>MongoDB</li>
+                  <li>REST APIs</li>
+                  <li>JWT Auth</li>
                 </ul>
                 <div class="project-actions">
                   <a href="https://polite-llama-edf38a.netlify.app/login" target="_blank" rel="noopener noreferrer" class="text-link">live demo <span aria-hidden="true">↗</span></a>
@@ -375,7 +380,7 @@
         <section id="contact" class="contact-section" aria-labelledby="contact-heading">
           <div class="contact-copy">
             <div class="section-label"><span>06</span> contact</div>
-            <h2 id="contact-heading" class="contact-title">have something<br>worth building<span class="accent-dot" style="color: var(--accent) !important;">?</span></h2>
+            <h2 id="contact-heading" class="contact-title">have something<br> worth building<span class="accent-dot" style="color: var(--accent) !important;">?</span></h2>
             <p>say hello. i'm always interested in thoughtful products and difficult systems problems.</p>
             
             <div class="contact-direct-email">
@@ -429,21 +434,8 @@
         </div>
       </footer>
     </div>
-
-    <!-- Floating Dock (Exact match of aarohb.com Uy component) -->
-    <nav class="dock" id="dock" aria-label="Page checkpoints">
-      <span class="dock-progress" id="dock-progress" aria-hidden="true"></span>
-      <ol>
-        <li><a class="dock-item" href="#about"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">about</span></a></li>
-        <li><a class="dock-item" href="#experience"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">experience</span></a></li>
-        <li><a class="dock-item" href="#projects"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">projects</span></a></li>
-        <li><a class="dock-item" href="#education"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">education</span></a></li>
-        <li><a class="dock-item" href="#skills"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">toolkit</span></a></li>
-        <li><a class="dock-item" href="#contact"><span class="dock-dot" aria-hidden="true"></span><span class="dock-label">contact</span></a></li>
-      </ol>
-    </nav>
   </div>
 
-  <script src="script.js?v=10.2"></script>
+  <script src="script.js?v=11.1"></script>
 </body>
 </html>

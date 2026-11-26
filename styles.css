@@ -73,6 +73,20 @@ body {
   scroll-margin-top: 4rem;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 999;
+  pointer-events: none;
+  transition: transform 0.05s linear;
+}
+
 button, input, textarea {
   font: inherit;
 }
@@ -109,7 +123,6 @@ body {
 a,
 button,
 [role="button"],
-.dock-item,
 .theme-switch,
 .text-link,
 .copy-email-btn,
@@ -130,7 +143,6 @@ label[for] {
 a:hover,
 button:hover,
 [role="button"]:hover,
-.dock-item:hover,
 .theme-switch:hover,
 .text-link:hover,
 .copy-email-btn:hover,
@@ -146,7 +158,6 @@ button:hover,
 :root.light-mode a,
 :root.light-mode button,
 :root.light-mode [role="button"],
-:root.light-mode .dock-item,
 :root.light-mode .theme-switch,
 :root.light-mode .text-link,
 :root.light-mode .copy-email-btn,
@@ -244,6 +255,7 @@ textarea {
 }
 
 .site-nav a {
+  position: relative;
   color: var(--muted);
   font-family: var(--mono);
   font-size: .72rem;
@@ -252,12 +264,14 @@ textarea {
   text-decoration: none;
   text-transform: lowercase;
   transition: color .16s ease;
+  padding: .2rem 0;
 }
 
 .site-nav a:before {
   color: var(--accent);
   content: "#";
   opacity: 0;
+  margin-right: 1px;
   transition: opacity .16s ease;
 }
 
@@ -267,6 +281,25 @@ textarea {
 
 .site-nav a:hover:before {
   opacity: 1;
+}
+
+.site-nav a.is-active {
+  color: var(--ink);
+}
+
+.site-nav a.is-active:before {
+  opacity: 1;
+}
+
+.site-nav a.is-active:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 1px;
 }
 
 /* --------------------------------------------------------------------------
@@ -958,22 +991,41 @@ textarea {
 }
 
 .initiative {
-  max-width: 720px;
-  margin-top: 1.35rem;
-  padding: .9rem 0 .9rem 1.25rem;
-  border-left: 2px solid var(--accent);
-  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent);
+  max-width: 760px;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  transition: border-color .2s ease;
+}
+
+.initiative:hover {
+  border-color: var(--line-strong);
+  border-left-color: var(--accent);
+}
+
+.initiative-header {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
 }
 
 .initiative-label {
-  margin: 0 0 .35rem;
+  margin: 0;
   color: var(--accent);
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
-.initiative-label + p {
+.initiative-title {
   margin: 0;
   color: var(--ink-soft);
-  font-size: .9rem;
+  font-size: .92rem;
   line-height: 1.55;
 }
 
@@ -985,30 +1037,38 @@ textarea {
 .initiative-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-  margin: 1.15rem 1rem 0 0;
-  padding-top: .85rem;
-  border-top: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  gap: .75rem;
+  margin: 1.1rem 0 0;
+  padding-top: .95rem;
+  border-top: 1px solid var(--line);
 }
 
 .initiative-metrics div {
-  min-width: 0;
+  background: color-mix(in srgb, var(--canvas) 65%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: .65rem .75rem;
 }
 
 .initiative-metrics dt {
-  color: var(--accent);
-  font-family: 'Newsreader', ui-serif, Georgia, serif;
-  font-size: clamp(1.35rem, 2.8vw, 1.65rem);
-  line-height: 1.1;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
   white-space: nowrap;
 }
 
 .initiative-metrics dd {
-  margin: .4rem 0 0;
+  margin: .35rem 0 0;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: .66rem;
+  font-size: .65rem;
   line-height: 1.35;
+  text-transform: lowercase;
 }
 
 .experience-highlights {
@@ -1043,12 +1103,12 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   12. Section 03: Projects Grid
+   12. Section 03: Projects Grid & Architectural Case Plates
    -------------------------------------------------------------------------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .project-card {
@@ -1056,6 +1116,30 @@ textarea {
   flex-direction: column;
   min-width: 0;
   height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.65rem;
+  position: relative;
+  transition: transform .22s cubic-bezier(.2, .8, .2, 1), border-color .22s ease, box-shadow .22s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  border-top-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+}
+
+:root.light-mode .project-card {
+  background: #ffffff;
+  border-color: rgba(28, 28, 26, .14);
+}
+
+:root.light-mode .project-card:hover {
+  border-color: rgba(28, 28, 26, .26);
+  border-top-color: var(--accent);
+  box-shadow: 0 10px 24px rgba(28, 28, 26, .08);
 }
 
 .project-content {
@@ -1063,22 +1147,34 @@ textarea {
   flex: 1;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 0.5rem;
+  width: 100%;
 }
 
 .project-meta {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  gap: 1rem;
+  align-items: center;
+  gap: .75rem;
 }
 
-.project-meta span {
+.project-badge {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 700;
   color: var(--accent);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.project-year {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--muted);
 }
 
 .project-title {
-  margin: .7rem 0 0;
+  margin: .85rem 0 .4rem;
   font-family: 'Newsreader', ui-serif, Georgia, serif;
   font-size: 1.7rem;
   font-weight: 500;
@@ -1086,11 +1182,31 @@ textarea {
 }
 
 .project-description {
-  margin: .65rem 0 0;
+  margin: 0;
   color: var(--ink-soft);
-  font-size: .9rem;
+  font-size: .88rem;
   line-height: 1.62;
   flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  padding: 0;
+  margin: 1.35rem 0 1.25rem;
+  list-style: none;
+}
+
+.project-tags li, .tag, .skill-group li {
+  padding: .22rem .5rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--canvas) 60%, transparent);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .68rem;
+  line-height: 1.35;
 }
 
 .tag-list {
@@ -1102,25 +1218,14 @@ textarea {
   list-style: none;
 }
 
-.tag, .skill-group li {
-  padding: .24rem .55rem;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
-  color: var(--ink-soft);
-  font-family: var(--mono);
-  font-size: .7rem;
-  line-height: 1.4;
-}
-
-.tag {
-  color: var(--muted);
-}
-
 .project-actions {
+  display: flex;
+  align-items: center;
   gap: 1.25rem;
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+  width: 100%;
 }
 
 /* --------------------------------------------------------------------------
@@ -1206,121 +1311,60 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   15. Section 06: Contact Section (Crystal-Clear Contrast in Both Modes)
+   15. Section 06: Contact Section
    -------------------------------------------------------------------------- */
 .contact-section {
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(320px, .7fr);
   gap: clamp(2.5rem, 7vw, 6rem);
-  margin: clamp(4.5rem, 10vw, 8rem) 0 0;
-  padding: clamp(2.5rem, 6vw, 4.5rem);
-  border-radius: 12px;
-  transition: background-color 0.22s ease, border-color 0.22s ease;
+  margin: clamp(4.5rem, 10vw, 7.5rem) 0 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 0;
+  border-top: 1px solid var(--line);
+  transition: border-color 0.22s ease;
 }
 
-/* Dark Mode: Sleek Elevated Dark Card */
-:root:not(.light-mode) .contact-section {
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-}
-
-:root:not(.light-mode) .contact-section .section-label {
+.contact-section .section-label {
   color: var(--muted);
 }
 
-:root:not(.light-mode) .contact-section .section-label span {
+.contact-section .section-label span {
   color: var(--accent);
 }
 
-:root:not(.light-mode) .contact-section .contact-title {
+.contact-section .contact-title {
   color: var(--ink);
 }
 
-:root:not(.light-mode) .contact-section .contact-copy > p:last-child {
+.contact-section .contact-copy > p:last-child {
   color: var(--ink-soft);
 }
 
-:root:not(.light-mode) .contact-section .contact-form label {
+.contact-section .contact-form label {
   color: var(--muted);
 }
 
-:root:not(.light-mode) .contact-section .input {
+.contact-section .input {
   color: var(--ink);
   border-bottom: 1px solid var(--line-strong);
 }
 
-:root:not(.light-mode) .contact-section .input:focus {
+.contact-section .input:focus {
   border-color: var(--accent);
 }
 
-:root:not(.light-mode) .contact-section .btn {
+.contact-section .btn {
   color: var(--ink) !important;
 }
 
-:root:not(.light-mode) .contact-section .btn:hover {
+.contact-section .btn:hover {
   color: var(--accent) !important;
 }
 
-:root:not(.light-mode) .contact-section .copy-email-btn {
+.contact-section .copy-email-btn {
   color: var(--ink) !important;
 }
 
-:root:not(.light-mode) .contact-section .copy-email-btn:hover {
-  color: var(--accent) !important;
-}
-
-/* Light Mode: Crisp Elevated White Card */
-:root.light-mode .contact-section {
-  background: #ffffff;
-  color: #1c1c1a;
-  border: 1px solid rgba(28, 28, 26, 0.16);
-  box-shadow: 0 12px 35px rgba(28, 28, 26, 0.06);
-}
-
-:root.light-mode .contact-section .section-label {
-  color: var(--muted);
-}
-
-:root.light-mode .contact-section .section-label span {
-  color: var(--accent);
-}
-
-:root.light-mode .contact-section .contact-title {
-  color: #1c1c1a;
-}
-
-:root.light-mode .contact-section .contact-copy > p:last-child {
-  color: var(--ink-soft);
-}
-
-:root.light-mode .contact-section .contact-form label {
-  color: var(--muted);
-}
-
-:root.light-mode .contact-section .input {
-  color: #1c1c1a;
-  border-bottom: 1px solid rgba(28, 28, 26, 0.24);
-}
-
-:root.light-mode .contact-section .input:focus {
-  border-color: var(--accent);
-}
-
-:root.light-mode .contact-section .btn {
-  color: #1c1c1a !important;
-}
-
-:root.light-mode .contact-section .btn:hover {
-  color: var(--accent) !important;
-}
-
-:root.light-mode .contact-section .copy-email-btn {
-  color: #1c1c1a !important;
-}
-
-:root.light-mode .contact-section .copy-email-btn:hover {
+.contact-section .copy-email-btn:hover {
   color: var(--accent) !important;
 }
 
@@ -1455,14 +1499,16 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   16. Site Footer & Floating Dock Clearance
+   16. Site Footer
    -------------------------------------------------------------------------- */
 .site-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  padding: 3.5rem 0 11rem;
+  padding: 3.5rem 0 4rem;
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  border-top: 1px solid var(--line);
   color: var(--muted);
   font-family: var(--mono);
   font-size: .72rem;
@@ -1488,93 +1534,6 @@ textarea {
 
 .footer-links span {
   color: var(--accent);
-}
-
-.has-dock {
-  padding-bottom: 12rem;
-}
-
-/* --------------------------------------------------------------------------
-   17. Floating Dock (Exact match of aarohb.com Uy component)
-   -------------------------------------------------------------------------- */
-.dock {
-  position: fixed;
-  left: 50%;
-  bottom: 1.25rem;
-  z-index: 90;
-  overflow: hidden;
-  padding: .4rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--canvas) 85%, transparent);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, 1.25rem);
-  transition: opacity .22s ease, transform .22s ease;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.dock.is-visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, 0);
-}
-
-.dock-progress {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 2px;
-  background: var(--accent);
-  transform-origin: left;
-}
-
-.dock ol {
-  display: flex;
-  align-items: center;
-  gap: .15rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.dock-item {
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  padding: .5rem .85rem;
-  border-radius: 999px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: .68rem;
-  text-decoration: none;
-  transition: color .16s ease, background .16s ease, transform .18s cubic-bezier(.2, .7, .2, 1);
-}
-
-.dock-item:hover {
-  color: var(--ink);
-  background: var(--surface-raised);
-  transform: translateY(-2px);
-}
-
-.dock-item.is-active {
-  color: #ffffff;
-  background: var(--accent);
-}
-
-.dock-dot {
-  width: 6px;
-  height: 6px;
-  flex: 0 0 auto;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-}
-
-.dock-item.is-active .dock-dot {
-  background: currentColor;
 }
 
 /* --------------------------------------------------------------------------
@@ -1695,26 +1654,7 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
-    padding-bottom: 9.5rem;
-  }
-  .dock {
-    bottom: .85rem;
-    max-width: calc(100vw - 1.25rem);
-    padding: .35rem;
-  }
-  .dock-item {
-    min-height: 38px;
-    padding: .45rem .65rem;
-  }
-  .dock-item .dock-label {
-    display: none;
-  }
-  .dock-item.is-active {
-    padding: .45rem .85rem;
-  }
-  .dock-item.is-active .dock-label {
-    display: inline;
-    font-weight: 700;
+    padding-bottom: 3.5rem;
   }
 }
 

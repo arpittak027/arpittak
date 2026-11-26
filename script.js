@@ -66,39 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ----------------------------------------------------
-  // 3. Floating Dock Scroll Progress & Section Spy
-  // (Identical algorithm to aarohb.com Uy component)
+  // 3. Scroll Progress Indicator & Header Navigation Spy
   // ----------------------------------------------------
-  const dock = document.getElementById('dock');
-  const dockProgress = document.getElementById('dock-progress');
-  const dockLinks = document.querySelectorAll('.dock-item');
+  const scrollProgress = document.getElementById('scroll-progress');
+  const navLinks = document.querySelectorAll('.site-nav a');
   const checkpoints = ['about', 'experience', 'projects', 'education', 'skills', 'contact'];
 
   let ticking = false;
 
-  function updateDock() {
+  function updateScrollSpy() {
     ticking = false;
     const scrollY = window.scrollY;
     const innerHeight = window.innerHeight;
     const maxScroll = document.documentElement.scrollHeight - innerHeight;
 
-    // Scale progress bar
+    // Scale hairline progress bar
     const progress = maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0;
-    if (dockProgress) {
-      dockProgress.style.transform = `scaleX(${progress})`;
+    if (scrollProgress) {
+      scrollProgress.style.transform = `scaleX(${progress})`;
     }
 
-    // Dock visibility (show after 45% of viewport scrolled)
-    if (dock) {
-      if (scrollY > innerHeight * 0.45) {
-        dock.classList.add('is-visible');
-      } else {
-        dock.classList.remove('is-visible');
-      }
-    }
-
-    // Active checkpoint calculation
-    const threshold = innerHeight * 0.4;
+    // Active section calculation
+    const threshold = innerHeight * 0.35;
     let activeId = null;
 
     for (const id of checkpoints) {
@@ -111,16 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Bottom reached
-    if (maxScroll > 0 && scrollY >= maxScroll - 4) {
+    // If reached the bottom of page
+    if (maxScroll > 0 && scrollY >= maxScroll - 30) {
       activeId = checkpoints[checkpoints.length - 1];
     }
 
-    dockLinks.forEach(link => {
+    navLinks.forEach(link => {
       const href = link.getAttribute('href').replace('#', '');
       if (href === activeId) {
         link.classList.add('is-active');
-        link.setAttribute('aria-current', 'true');
+        link.setAttribute('aria-current', 'page');
       } else {
         link.classList.remove('is-active');
         link.removeAttribute('aria-current');
@@ -130,19 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      window.requestAnimationFrame(updateDock);
+      window.requestAnimationFrame(updateScrollSpy);
       ticking = true;
     }
   }, { passive: true });
 
   window.addEventListener('resize', () => {
     if (!ticking) {
-      window.requestAnimationFrame(updateDock);
+      window.requestAnimationFrame(updateScrollSpy);
       ticking = true;
     }
   }, { passive: true });
 
-  updateDock();
+  updateScrollSpy();
 
   // ----------------------------------------------------
   // 4. Live GitHub Contributions Heatmap
