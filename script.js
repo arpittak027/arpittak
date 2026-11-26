@@ -297,4 +297,44 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ----------------------------------------------------
+  // 6. Interactive Spotlight Follower on Cards
+  // ----------------------------------------------------
+  const spotlightCards = document.querySelectorAll('[data-spotlight="true"], .initiative, .bento-card');
+  spotlightCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', '-999px');
+      card.style.setProperty('--mouse-y', '-999px');
+    });
+  });
+
+  // ----------------------------------------------------
+  // 7. Live Bengaluru Time Clock
+  // ----------------------------------------------------
+  const heroTimeEl = document.getElementById('hero-time');
+  function updateTime() {
+    if (!heroTimeEl) return;
+    try {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+      heroTimeEl.textContent = `Bengaluru, IN · ${timeStr} IST`;
+    } catch (e) {
+      // fallback
+    }
+  }
+  updateTime();
+  setInterval(updateTime, 10000);
 });
